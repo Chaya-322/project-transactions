@@ -1,0 +1,33 @@
+table{
+  display:initial;
+  font-size: 12px;
+  text-align: center;
+}
+
+option,select{
+  background-color: rgb(189, 185, 185);
+  height: 28px;
+  width: 120px;
+}
+
+input{
+  width: 120px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #495057;
+  background-clip: padding-box;
+  background-color: rgb(189, 185, 185);
+}
+
+div{
+  display: initial;
+}
+
+.button{
+  height: 40px;
+  width: 120px;
+}
+
+#reset{
+  color: crimson;
+}

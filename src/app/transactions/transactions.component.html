@@ -1,0 +1,80 @@
+<input type="button" id="reset" value="Reset All" (click)="reset()">
+<br>
+<nav id="changes"><br>
+    <input type="button" value="Initial Status" name="initial" (click)="saveInitialStatus()">
+    <input type="text" [(ngModel)]="initialStatus" name="initial" placeholder="Initial Status">
+</nav>
+<br><br>
+    
+<input type="button" value="Transactions" class="button" (click)="showTransacs()">
+<div *ngIf="showT">
+    <table>
+        <tr>
+            <td><b>tranName</b></td>
+            <td><b>managerName</b></td>
+            <!-- <td><b>createdDate</b></td> -->
+            <!-- <td><b>email</b></td> -->
+            <td><b>fromStatus</b></td>
+            <!-- <td><b>toStatus</b></td> -->
+        </tr>
+        <tr *ngFor="let transac of allTransactions">
+            <td>{{transac.tranName}}</td> 
+            <td>{{transac.managerName}}</td>
+            <!-- <td>{{transac.createdDate.toLocaleDateString()}}</td> -->
+            <!-- <td>{{transac.email}}</td> -->
+            <td>{{transac.fromStatus.statusName}}</td>
+            <!-- <td>{{transac.toStatus.statusName}}</td>            -->
+      </tr>
+    </table> 
+</div> 
+<br><br>
+
+<input type="button" value="Statuses" class="button" (click)="showStatuses()">
+<div *ngIf="showS">
+    <table>
+        <tr>
+            <td><b>statusName</b></td>
+            <td><b>statusLabel</b></td>
+        </tr>
+        <tr *ngFor="let status of allStatus">
+            <td>{{status.statusName}}</td>
+            <td>{{status.label}}</td> 
+      </tr>
+    </table> 
+</div>
+<br><br><br>
+<div>
+    <input type="button" value="New Status" (click)="addStatus()">
+    <input type="text" [(ngModel)]="newStatus" placeholder="Status Name">
+</div>
+<br><br>
+
+<div>
+    <input type="button" value="Delete Status" (click)="deleteStatus()">
+    <input type="text" [(ngModel)]="delStatus" placeholder="Status Name">
+</div>
+<br><br><br>
+
+<div>
+    <input type="button" value="Delete Transac"(click)="deleteTransac()">
+    <select [(ngModel)]="selectedTransac">
+        <option *ngFor="let transac of allTransactions">{{transac.tranName}}</option>
+    </select>
+</div>
+<br><br>
+
+<input type="button" value="New Transaction" (click)="showNewTransac()">
+<br><br>
+<input *ngIf="showNewTran" [(ngModel)]="tranName" placeholder="Tran Name">
+<br><br>
+<input *ngIf="showNewTran" [(ngModel)]="managerName" placeholder="Manager Name">
+<br><br>
+<input *ngIf="showNewTran" [(ngModel)]="email" type="email" placeholder="Email">
+<br>
+<label *ngIf="showNewTran">from Status:</label>
+<br>
+<select *ngIf="showNewTran" [(ngModel)]="selectedStatus">
+    <option *ngFor="let status of allStatus">{{status.statusName}}</option>
+</select>
+<br><br>
+<input *ngIf="showNewTran" type="button" value="New Transac" (click)="addNewTransac()">
